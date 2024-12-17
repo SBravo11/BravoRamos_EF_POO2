@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Dominio.Entidad.Herramientas.Entidad.Herramientas>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Agregar Nuevo", "Agregar", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.desher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.medher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idcategoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.preuni)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stock)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.desher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.medher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idcategoria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.preuni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stock)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.idher }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.idher })
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+<div>
+    @for (int i = 0; i < (int)ViewBag.npag; i++)
+    {
+        @Html.ActionLink((i + 1).ToString(), "Index", new { p = i }, new { @class = "btn btn-danger" })
+
+    }
+</div>
